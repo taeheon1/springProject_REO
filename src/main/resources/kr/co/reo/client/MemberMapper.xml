@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberDAO">
+	<insert id="insertMember">
+		insert into member(mem_email,mem_name,mem_pw,mem_tel,mem_role,mem_sector,mem_agentName, mem_agentTel)
+		values (#{mem_email}, #{mem_name}, #{mem_pw},#{mem_tel},#{mem_role},#{mem_detailaddress},#{mem_sector},#{mem_agentName}, #{mem_agentTel})
+	</insert>
+	<update id="adUpdateMember">
+		update member set mem_email=#{mem_email}, mem_name=#{mem_name},mem_pw=#{mem_pw}, mem_tel=#{mem_tel},
+		mem_role=#{mem_role},mem_sector=#{mem_sector},mem_agentName=#{mem_agentName},mem_agentTel=#{mem_agentTel} where mem_email=#{mem_email}
+	</update>
+	
+</mapper>

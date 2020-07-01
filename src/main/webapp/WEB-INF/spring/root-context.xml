@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="org.mariadb.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://218.50.121.249:3306/reo?useUnicode=true" />
+		<property name="username" value="reo" />
+		<property name="password" value="REO" />
+		<property name="initialSize" value="500" />
+		<property name="maxTotal" value="100" />
+		<property name="maxWaitMillis" value="3000" />
+	</bean>
+
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath*:kr/co/**/*Mapper.xml</value>
+			</list>
+		</property>
+		<property name="configLocation">
+			<value>classpath:sqlMapConfig.xml</value>
+		</property>
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionTemplate" />
+	</bean>
+	
+	<context:component-scan base-package="kr.co.reo.client.member.*"/>
+	
+</beans>
