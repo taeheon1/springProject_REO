@@ -2,15 +2,28 @@ package kr.co.reo.common;
 
 import java.sql.Date;
 
+import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlTransient;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class MemberDTO {
 	private int mem_num;
+	@Pattern(regexp="^\\S*$", message="공백문자를 입력할 수 없습니다.")
+	@Email(message="이메일 형식이 아닙니다.")
+	@NotEmpty(message = "이메일을 입력해주세요.")
 	private String mem_email;
+	@Pattern(regexp="(^[가-힣]*$)", message="이름이 아닙니다.")
+	@NotEmpty(message = "이름을 입력해주세요.")
 	private String mem_name;
+	@Pattern(regexp="^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$", message="비밀번호 형식을 확인해주세요.")
+	@NotEmpty(message = "비밀번호를 입력해주세요.")
 	private String mem_pw;
+	@Pattern(regexp="(^[0-9]*$)", message="전화번호가 아닙니다.")
+	@NotEmpty(message = "전화번호를 입력해주세요.")
 	private String mem_tel;
 	private String mem_role;
 	private Date mem_regDate;

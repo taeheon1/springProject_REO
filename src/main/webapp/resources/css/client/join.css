@@ -27,11 +27,15 @@
 	color: #fff;
 }
 
-#twitter {
-	background-color: #42AEEC;
+#google {
+	background-color: #ff0000;
 	color: #fff;
 }
 #kakao {
 	background-color: #FEE110;
-	color: #fff;
+	color: #000;
 }
+.errmsg{
+	color:red;
+}
+

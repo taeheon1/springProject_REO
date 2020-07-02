@@ -4,8 +4,8 @@
 
 <mapper namespace="MemberDAO">
 	<insert id="insertMember">
-		insert into member(mem_email,mem_name,mem_pw,mem_tel,mem_role,mem_sector,mem_agentName, mem_agentTel)
-		values (#{mem_email}, #{mem_name}, #{mem_pw},#{mem_tel},#{mem_role},#{mem_detailaddress},#{mem_sector},#{mem_agentName}, #{mem_agentTel})
+		insert into member(mem_email,mem_name,mem_pw,mem_tel,mem_role)
+		values (#{mem_email}, #{mem_name}, #{mem_pw},#{mem_tel},#{mem_role})
 	</insert>
 	<update id="adUpdateMember">
 		update member set mem_email=#{mem_email}, mem_name=#{mem_name},mem_pw=#{mem_pw}, mem_tel=#{mem_tel},
